@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>John Welkin Alcazaren — YouTube Editor & Creator</title>
+<meta name="description" content="Freelance YouTube video editor and content strategist with 3-4 years of experience. Open for projects.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
@@ -18,6 +19,10 @@
   --text-mid:   #999999;
   --text-dim:   #555555;
   --green:      #22c55e;
+  --green-dim:  rgba(34,197,94,0.15);
+  --red:        #E8332A;
+  --red-dim:    rgba(232,51,42,0.15);
+  --star:       #FBBF24;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -33,7 +38,7 @@ nav.scrolled { background:rgba(12,12,12,0.92); backdrop-filter:blur(12px); borde
 .nav-links a:hover { color:var(--text); }
 .nav-cta { background:var(--accent); color:#fff !important; padding:0.45rem 1.1rem; border-radius:6px; font-weight:500 !important; }
 
-#hero { min-height:100vh; display:flex; align-items:center; padding:6rem 2.5rem 4rem; position:relative; }
+#hero { min-height:100vh; display:flex; align-items:center; padding:6rem 2.5rem 4rem; }
 .hero-inner { max-width:900px; margin:0 auto; width:100%; }
 .hero-eyebrow { font-family:'DM Mono',monospace; font-size:0.8rem; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:1.2rem; display:flex; align-items:center; gap:0.75rem; }
 .hero-eyebrow::before { content:''; display:inline-block; width:24px; height:1px; background:var(--accent); }
@@ -50,8 +55,7 @@ nav.scrolled { background:rgba(12,12,12,0.92); backdrop-filter:blur(12px); borde
 .btn-outline { background:transparent; color:var(--text); padding:0.75rem 1.8rem; border-radius:8px; font-weight:500; text-decoration:none; font-size:0.95rem; border:1px solid var(--border); transition:border-color 0.2s, transform 0.2s; display:inline-flex; align-items:center; gap:0.5rem; }
 .btn-outline:hover { border-color:var(--text-mid); transform:translateY(-1px); }
 .hero-stats { display:flex; gap:2.5rem; margin-top:3.5rem; padding-top:2rem; border-top:1px solid var(--border); flex-wrap:wrap; }
-.stat-num { font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; line-height:1; }
-.stat-num span { color:var(--accent); }
+.stat-num { font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; line-height:1; color:var(--accent); }
 .stat-label { font-size:0.8rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
 .avail-dot { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--green); background:rgba(34,197,94,0.1); padding:0.35rem 0.9rem; border-radius:20px; border:1px solid rgba(34,197,94,0.2); }
 .avail-dot::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--green); animation:pulse 2s ease-in-out infinite; }
@@ -71,23 +75,54 @@ section { padding:6rem 2.5rem; }
 .about-card-label { font-size:0.72rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:0.5rem; font-family:'DM Mono',monospace; }
 .about-card-val { font-size:0.95rem; color:var(--text); font-weight:500; }
 
+/* Portfolio */
 .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; }
 .channel-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.6rem; text-decoration:none; display:block; transition:border-color 0.2s, transform 0.2s, background 0.2s; position:relative; overflow:hidden; }
-.channel-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--accent); transform:scaleX(0); transition:transform 0.3s; }
+.channel-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; transition:background 0.3s, transform 0.3s; transform:scaleX(0); }
+.channel-card.is-client::before  { background:var(--red); }
+.channel-card.is-personal::before { background:var(--green); }
 .channel-card:hover::before { transform:scaleX(1); }
 .channel-card:hover { border-color:#3a3a3a; transform:translateY(-3px); background:#212121; }
-.ch-badge { display:inline-block; background:var(--accent-dim); color:var(--accent); font-size:0.7rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:3px 10px; border-radius:4px; margin-bottom:1rem; }
-.ch-handle { font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:700; color:var(--text); margin-bottom:0.4rem; }
-.ch-niche { font-size:0.85rem; color:var(--text-mid); margin-bottom:1.2rem; }
-.ch-link { font-size:0.8rem; color:var(--accent); font-family:'DM Mono',monospace; }
+.ch-badge { display:inline-block; font-size:0.7rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:3px 10px; border-radius:4px; margin-bottom:1rem; }
+.badge-client   { background:var(--red-dim);   color:var(--red); }
+.badge-personal { background:var(--green-dim); color:var(--green); }
+.ch-handle { font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:700; color:var(--text); margin-bottom:0.3rem; }
+.ch-name   { font-size:0.9rem; color:var(--text-mid); margin-bottom:0.3rem; }
+.ch-niche  { font-size:0.82rem; color:var(--text-dim); margin-bottom:1.2rem; }
+.ch-link   { font-size:0.8rem; color:var(--accent); font-family:'DM Mono',monospace; }
 .ch-link::after { content:' ↗'; }
 
+/* Skills */
 #skills { background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
 .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:0.75rem; }
 .skill-item { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:0.9rem 1.2rem; font-size:0.9rem; color:var(--text-mid); display:flex; align-items:center; gap:0.6rem; transition:border-color 0.2s, color 0.2s; }
 .skill-item:hover { border-color:var(--accent); color:var(--text); }
 .skill-dot { width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0; }
 
+/* Reviews */
+#reviews { border-top:1px solid var(--border); }
+.reviews-header { display:flex; align-items:center; gap:1.5rem; margin-bottom:3rem; flex-wrap:wrap; }
+.overall-score { display:flex; flex-direction:column; align-items:center; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:1.4rem 2rem; }
+.overall-num { font-family:'Syne',sans-serif; font-size:3rem; font-weight:800; color:var(--text); line-height:1; }
+.overall-stars { color:var(--star); font-size:1.1rem; margin:4px 0; }
+.overall-count { font-size:0.78rem; color:var(--text-dim); }
+.overall-divider { width:1px; height:60px; background:var(--border); }
+.overall-summary { font-size:0.95rem; color:var(--text-mid); max-width:360px; line-height:1.7; }
+.overall-summary strong { color:var(--text); }
+
+.reviews-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; }
+.review-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.6rem; display:flex; flex-direction:column; gap:1rem; transition:border-color 0.2s, transform 0.2s; }
+.review-card:hover { border-color:#3a3a3a; transform:translateY(-2px); }
+.review-stars { color:var(--star); font-size:1rem; letter-spacing:2px; }
+.review-stars .half { opacity:0.35; }
+.review-quote { font-size:0.95rem; color:var(--text); line-height:1.75; font-style:italic; flex:1; }
+.review-quote::before { content:'\201C'; font-family:'Syne',sans-serif; font-size:2.5rem; color:var(--accent); line-height:0; vertical-align:-0.6rem; margin-right:4px; font-style:normal; }
+.review-footer { display:flex; align-items:center; gap:0.75rem; border-top:1px solid var(--border); padding-top:1rem; }
+.review-avatar { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-size:0.85rem; font-weight:700; flex-shrink:0; }
+.review-name { font-size:0.9rem; font-weight:600; color:var(--text); }
+.review-channel { font-size:0.75rem; color:var(--text-dim); font-family:'DM Mono',monospace; }
+
+/* Contact */
 .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
 .contact-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.6rem; display:flex; align-items:center; gap:1rem; text-decoration:none; transition:border-color 0.2s, transform 0.2s; }
 .contact-card:hover { border-color:var(--accent); transform:translateY(-2px); }
@@ -109,26 +144,9 @@ footer { padding:2rem 2.5rem; border-top:1px solid var(--border); display:flex; 
   #hero { padding:5rem 1.2rem 3rem; }
   .about-grid,.contact-grid { grid-template-columns:1fr; }
   .hero-stats { gap:1.5rem; }
+  .portfolio-grid,.reviews-grid { grid-template-columns:1fr; }
+  .overall-divider { display:none; }
 }
-
-/* Edit panel */
-#edit-btn { position:fixed; bottom:1.5rem; right:1.5rem; z-index:200; background:var(--accent); color:#fff; border:none; border-radius:50px; padding:0.7rem 1.3rem; font-size:0.85rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:0.5rem; box-shadow:0 4px 20px rgba(232,51,42,0.4); transition:transform 0.2s; font-family:'DM Sans',sans-serif; }
-#edit-btn:hover { transform:scale(1.04); }
-#edit-panel { position:fixed; bottom:5rem; right:1.5rem; z-index:200; background:#1a1a1a; border:1px solid var(--border); border-radius:16px; width:320px; max-height:80vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.6); display:none; flex-direction:column; }
-#edit-panel.open { display:flex; }
-.ep-header { padding:1rem 1.2rem; border-bottom:1px solid var(--border); font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; display:flex; justify-content:space-between; align-items:center; }
-.ep-close { background:none; border:none; color:var(--text-mid); cursor:pointer; font-size:1.2rem; }
-.ep-body { padding:1rem 1.2rem; display:flex; flex-direction:column; gap:0.9rem; }
-.ep-group label { display:block; font-size:0.72rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.35rem; }
-.ep-group input,.ep-group textarea { width:100%; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:0.55rem 0.8rem; color:var(--text); font-size:0.85rem; font-family:'DM Sans',sans-serif; outline:none; transition:border-color 0.2s; }
-.ep-group input:focus,.ep-group textarea:focus { border-color:var(--accent); }
-.ep-group textarea { resize:vertical; min-height:70px; }
-.ep-color { display:flex; align-items:center; gap:0.6rem; }
-.ep-color input[type=color] { width:36px; height:36px; border-radius:8px; padding:2px; cursor:pointer; flex-shrink:0; border:1px solid var(--border); background:var(--card); }
-.ep-color input[type=text] { flex:1; }
-.ep-apply { background:var(--accent); color:#fff; border:none; border-radius:8px; padding:0.65rem; width:100%; font-size:0.9rem; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; margin-top:0.3rem; transition:opacity 0.2s; }
-.ep-apply:hover { opacity:0.88; }
-.ep-section-title { font-size:0.7rem; color:var(--accent); text-transform:uppercase; letter-spacing:1.5px; font-weight:600; padding-top:0.5rem; border-top:1px solid var(--border); margin-top:0.3rem; }
 </style>
 </head>
 <body>
@@ -138,6 +156,7 @@ footer { padding:2rem 2.5rem; border-top:1px solid var(--border); display:flex; 
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#reviews">Reviews</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact" class="nav-cta">Hire Me</a></li>
   </ul>
@@ -145,30 +164,30 @@ footer { padding:2rem 2.5rem; border-top:1px solid var(--border); display:flex; 
 
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow" id="h-eyebrow">YouTube Creator &amp; Video Editor</div>
+    <div class="hero-eyebrow">YouTube Creator &amp; Video Editor</div>
     <h1 class="hero-name">
-      <span id="h-name1">John Welkin</span><br>
-      <span class="line2" id="h-name2">Alcazaren.</span>
+      John Welkin<br>
+      <span class="line2">Alcazaren.</span>
     </h1>
     <div class="hero-role-wrap">
       I'm a&nbsp;<span class="hero-role-text"><span id="typed-text"></span><span class="cursor"></span></span>
     </div>
-    <p class="hero-bio" id="h-bio">I've been doing YouTube and video editing for about 3-4 years now, running my own channels, working with clients, and figuring out what actually gets people to watch till the end.</p>
+    <p class="hero-bio">I've been doing YouTube and video editing for about 3-4 years now, running my own channels, working with clients, and figuring out what actually gets people to watch till the end.</p>
     <div class="hero-actions">
       <a href="#portfolio" class="btn-primary">See My Work ↓</a>
       <a href="#contact" class="btn-outline">Get In Touch</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-num"><span id="h-years">3-4</span></div>
+        <div class="stat-num">3-4</div>
         <div class="stat-label">Years Experience</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num"><span id="h-channels">2</span></div>
+        <div class="stat-num">2</div>
         <div class="stat-label">Monetized Channels</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num"><span id="h-clients">3</span><span style="color:var(--text-mid);font-size:1.3rem">+</span></div>
+        <div class="stat-num">4+</div>
         <div class="stat-label">Clients Worked With</div>
       </div>
       <div style="display:flex;align-items:flex-end;padding-bottom:4px;">
@@ -184,15 +203,15 @@ footer { padding:2rem 2.5rem; border-top:1px solid var(--border); display:flex; 
     <h2 class="section-title">A little <em>about me</em></h2>
     <div class="about-grid">
       <div class="about-text fade-in">
-        <p id="a-bio1">I started YouTube just by figuring things out on my own, and honestly that's still how I learn best. Over 3-4 years I've built channels, edited for clients, and picked up a real understanding of what makes content actually work on the platform.</p>
-        <p id="a-bio2">I don't just cut footage. I think about pacing, hooks, thumbnails, and what keeps someone from clicking away. If your channel needs someone who gets the whole picture, not just the edit, that's where I come in.</p>
-        <p id="a-bio3">I'm flexible, easy to work with, and happy to share what I know about editing styles and marketing that actually move the numbers. Let's build something together.</p>
+        <p>I started YouTube just by figuring things out on my own, and honestly that's still how I learn best. Over 3-4 years I've built channels, edited for clients, and picked up a real understanding of what makes content actually work on the platform.</p>
+        <p>I don't just cut footage. I think about pacing, hooks, thumbnails, and what keeps someone from clicking away. If your channel needs someone who gets the whole picture, not just the edit, that's where I come in.</p>
+        <p>I'm flexible, easy to work with, and happy to share what I know about editing styles and marketing that actually move the numbers. Let's build something together.</p>
       </div>
       <div class="about-extras fade-in">
-        <div class="about-card"><div class="about-card-label">Location</div><div class="about-card-val" id="a-location">Philippines 🇵🇭</div></div>
-        <div class="about-card"><div class="about-card-label">Availability</div><div class="about-card-val" style="color:var(--green);" id="a-availability">Open for projects</div></div>
-        <div class="about-card"><div class="about-card-label">Niches I've Worked In</div><div class="about-card-val" id="a-niches">Crime, Animation Storytelling, Social Media</div></div>
-        <div class="about-card"><div class="about-card-label">Languages</div><div class="about-card-val" id="a-languages">Filipino (Native), English (Conversational)</div></div>
+        <div class="about-card"><div class="about-card-label">Location</div><div class="about-card-val">Philippines 🇵🇭</div></div>
+        <div class="about-card"><div class="about-card-label">Availability</div><div class="about-card-val" style="color:var(--green);">Open for projects</div></div>
+        <div class="about-card"><div class="about-card-label">Niches I've Worked In</div><div class="about-card-val">Crime, Animation Storytelling, Social Media</div></div>
+        <div class="about-card"><div class="about-card-label">Languages</div><div class="about-card-val">Filipino (Native), English (Conversational)</div></div>
       </div>
     </div>
   </div>
@@ -203,6 +222,23 @@ footer { padding:2rem 2.5rem; border-top:1px solid var(--border); display:flex; 
     <div class="section-label">Portfolio</div>
     <h2 class="section-title">Channels I've <em>worked on</em></h2>
     <div class="portfolio-grid" id="portfolio-grid"></div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="section-inner">
+    <div class="section-label">Reviews</div>
+    <h2 class="section-title">What clients <em>say</em></h2>
+    <div class="reviews-header fade-in">
+      <div class="overall-score">
+        <div class="overall-num">4.7</div>
+        <div class="overall-stars">★★★★★</div>
+        <div class="overall-count">3 client reviews</div>
+      </div>
+      <div class="overall-divider"></div>
+      <p class="overall-summary"><strong>Consistently praised</strong> for being responsive, knowledgeable, and easy to work with. Clients don't just get an editor, they get someone who actually cares about their channel.</p>
+    </div>
+    <div class="reviews-grid" id="reviews-grid"></div>
   </div>
 </section>
 
@@ -220,7 +256,7 @@ footer { padding:2rem 2.5rem; border-top:1px solid var(--border); display:flex; 
     <h2 class="section-title">Let's <em>work together</em></h2>
     <div class="contact-grid" id="contact-grid"></div>
     <div class="contact-cta fade-in">
-      <p id="cta-text">Got a channel? I'd love to hear about it. Reach out on any platform and let's talk.</p>
+      <p>Got a channel? I'd love to hear about it. Reach out on any platform and let's talk.</p>
       <a href="mailto:alcazarenwelkin09@gmail.com" class="btn-primary">Send Me an Email</a>
     </div>
   </div>
@@ -231,164 +267,123 @@ footer { padding:2rem 2.5rem; border-top:1px solid var(--border); display:flex; 
   <span style="color:var(--text-dim);">YouTube Creator &amp; Video Editor</span>
 </footer>
 
-<button id="edit-btn" onclick="togglePanel()">✏️ Customize</button>
-<div id="edit-panel">
-  <div class="ep-header"><span>Customize Portfolio</span><button class="ep-close" onclick="togglePanel()">✕</button></div>
-  <div class="ep-body">
-    <div class="ep-section-title">Identity</div>
-    <div class="ep-group"><label>First Name / Line 1</label><input type="text" id="ep-name1"></div>
-    <div class="ep-group"><label>Last Name / Line 2</label><input type="text" id="ep-name2"></div>
-    <div class="ep-group"><label>Role Label</label><input type="text" id="ep-eyebrow"></div>
-    <div class="ep-group"><label>Hero Bio</label><textarea id="ep-bio"></textarea></div>
-    <div class="ep-section-title">Theme</div>
-    <div class="ep-group"><label>Accent Color</label>
-      <div class="ep-color">
-        <input type="color" id="ep-color-pick" value="#E8332A">
-        <input type="text" id="ep-color-txt" placeholder="#E8332A">
+<script>
+const channels = [
+  { type:"client",   handle:"@GuiltSignal",   name:"Guilt Signal",   niche:"Crime & True Crime Niche",        url:"https://www.youtube.com/@GuiltSignal",   urlLabel:"youtube.com/@GuiltSignal" },
+  { type:"client",   handle:"@Zenn0009",       name:"Zenn",           niche:"Storytelling Animation Niche",    url:"https://www.youtube.com/@Zenn0009",       urlLabel:"youtube.com/@Zenn0009" },
+  { type:"client",   handle:"@CuriousOwl-l5p", name:"A Curious Birb", niche:"Curious & Educational Niche",    url:"https://www.youtube.com/@CuriousOwl-l5p", urlLabel:"youtube.com/@CuriousOwl-l5p" },
+  { type:"personal", handle:"@Eleyzar",         name:"Eleyzar",        niche:"Personal, Testing & Development", url:"https://www.youtube.com/@Eleyzar",        urlLabel:"youtube.com/@Eleyzar" },
+];
+
+const reviews = [
+  {
+    quote: "Very responsive and provide more knowledge not just editing",
+    stars: 5,
+    name: "Guilt Signal",
+    channel: "@GuiltSignal",
+    initials: "GS",
+    color: "#E8332A",
+  },
+  {
+    quote: "Thankyou brother, i'm glad i have you",
+    stars: 5,
+    name: "Zenn",
+    channel: "@Zenn0009",
+    initials: "ZN",
+    color: "#7C3AED",
+  },
+  {
+    quote: "Scripts is goated",
+    stars: 4,
+    name: "A Curious Birb",
+    channel: "@CuriousOwl-l5p",
+    initials: "CB",
+    color: "#0EA5E9",
+  },
+];
+
+const skills = [
+  "Video Editing","YouTube Strategy","Audience Retention","Thumbnail Design",
+  "Content Scheduling","Social Media Editing","Script Support","SEO & Tagging",
+  "Marketing Insights","Niche Research",
+];
+
+const contacts = [
+  { icon:"📧", label:"Email",    val:"alcazarenwelkin09@gmail.com", href:"mailto:alcazarenwelkin09@gmail.com" },
+  { icon:"💬", label:"WhatsApp", val:"+63 938 235 3781",            href:"https://wa.me/639382353781" },
+  { icon:"🔵", label:"Facebook", val:"View Profile",                href:"https://www.facebook.com/share/1GctHRoJnD/" },
+  { icon:"🎮", label:"Discord",  val:"talentlesswelkin",            href:"#" },
+];
+
+function renderStars(count) {
+  let s = '';
+  for (let i = 1; i <= 5; i++) {
+    s += `<span${i <= count ? '' : ' class="half"'}>★</span>`;
+  }
+  return s;
+}
+
+document.getElementById('portfolio-grid').innerHTML = channels.map(ch => {
+  const isClient = ch.type === 'client';
+  return `
+  <a class="channel-card ${isClient ? 'is-client' : 'is-personal'} fade-in" href="${ch.url}" target="_blank">
+    <div class="ch-badge ${isClient ? 'badge-client' : 'badge-personal'}">${isClient ? 'Client' : 'Personal'}</div>
+    <div class="ch-handle">${ch.handle}</div>
+    <div class="ch-name">${ch.name}</div>
+    <div class="ch-niche">${ch.niche}</div>
+    <div class="ch-link">${ch.urlLabel}</div>
+  </a>`;
+}).join('');
+
+document.getElementById('reviews-grid').innerHTML = reviews.map(r => `
+  <div class="review-card fade-in">
+    <div class="review-stars">${renderStars(r.stars)}</div>
+    <p class="review-quote">${r.quote}</p>
+    <div class="review-footer">
+      <div class="review-avatar" style="background:${r.color}22; color:${r.color};">${r.initials}</div>
+      <div>
+        <div class="review-name">${r.name}</div>
+        <div class="review-channel">${r.channel}</div>
       </div>
     </div>
-    <div class="ep-section-title">Stats</div>
-    <div class="ep-group"><label>Years Experience</label><input type="text" id="ep-years"></div>
-    <div class="ep-group"><label>Monetized Channels</label><input type="text" id="ep-channels"></div>
-    <div class="ep-group"><label>Clients</label><input type="text" id="ep-clients"></div>
-    <div class="ep-section-title">About</div>
-    <div class="ep-group"><label>Location</label><input type="text" id="ep-location"></div>
-    <div class="ep-group"><label>Availability</label><input type="text" id="ep-availability"></div>
-    <div class="ep-group"><label>Niches</label><input type="text" id="ep-niches"></div>
-    <button class="ep-apply" onclick="applyChanges()">Apply Changes</button>
-  </div>
-</div>
+  </div>`).join('');
 
-<script>
-// ══════════════════════════════════════════════════
-//  YOUR DATA — edit this to update the whole site
-// ══════════════════════════════════════════════════
-const CONFIG = {
-  name: { line1:"John Welkin", line2:"Alcazaren." },
-  eyebrow: "YouTube Creator & Video Editor",
-  roles: ["Video Editor.","Content Strategist.","YouTube Creator.","Channel Builder."],
-  heroBio: "I've been doing YouTube and video editing for about 3-4 years now, running my own channels, working with clients, and figuring out what actually gets people to watch till the end.",
-  accent: "#E8332A",
-  stats: { years:"3-4", channels:"2", clients:"3" },
-  about: {
-    location:"Philippines 🇵🇭",
-    availability:"Open for projects",
-    niches:"Crime, Animation Storytelling, Social Media",
-    languages:"Filipino (Native), English (Conversational)",
-  },
-  channels: [
-    { badge:"Client",   handle:"@GuiltSignal", niche:"Crime & True Crime Niche",      url:"https://www.youtube.com/@GuiltSignal", urlLabel:"youtube.com/@GuiltSignal" },
-    { badge:"Client",   handle:"@Zenn0009",    niche:"Storytelling Animation Niche",   url:"https://www.youtube.com/@Zenn0009",    urlLabel:"youtube.com/@Zenn0009" },
-    { badge:"Personal", handle:"@Eleyzar",     niche:"Testing & Development",          url:"https://www.youtube.com/@Eleyzar",     urlLabel:"youtube.com/@Eleyzar" },
-  ],
-  skills: ["Video Editing","YouTube Strategy","Audience Retention","Thumbnail Design","Content Scheduling","Social Media Editing","Script Support","SEO & Tagging","Marketing Insights","Niche Research"],
-  contacts: [
-    { icon:"📧", label:"Email",    val:"alcazarenwelkin09@gmail.com", href:"mailto:alcazarenwelkin09@gmail.com" },
-    { icon:"💬", label:"WhatsApp", val:"+63 938 235 3781",            href:"https://wa.me/639382353781" },
-    { icon:"🔵", label:"Facebook", val:"View Profile",                href:"https://www.facebook.com/share/1GctHRoJnD/" },
-    { icon:"🎮", label:"Discord",  val:"talentlesswelkin",            href:"#" },
-  ],
-  ctaText:"Got a channel? I'd love to hear about it. Reach out on any platform and let's talk.",
-};
-// ══════════════════════════════════════════════════
+document.getElementById('skills-grid').innerHTML = skills.map(s =>
+  `<div class="skill-item fade-in"><span class="skill-dot"></span>${s}</div>`
+).join('');
 
-function renderPortfolio() {
-  document.getElementById('portfolio-grid').innerHTML = CONFIG.channels.map(ch=>`
-    <a class="channel-card fade-in" href="${ch.url}" target="_blank">
-      <div class="ch-badge">${ch.badge}</div>
-      <div class="ch-handle">${ch.handle}</div>
-      <div class="ch-niche">${ch.niche}</div>
-      <div class="ch-link">${ch.urlLabel}</div>
-    </a>`).join('');
-}
-function renderSkills() {
-  document.getElementById('skills-grid').innerHTML = CONFIG.skills.map(s=>`
-    <div class="skill-item fade-in"><span class="skill-dot"></span>${s}</div>`).join('');
-}
-function renderContacts() {
-  document.getElementById('contact-grid').innerHTML = CONFIG.contacts.map(c=>`
-    <a class="contact-card fade-in" href="${c.href}" target="_blank">
-      <div class="contact-icon">${c.icon}</div>
-      <div><div class="contact-label">${c.label}</div><div class="contact-val">${c.val}</div></div>
-    </a>`).join('');
-}
-function applyStatic() {
-  document.getElementById('h-name1').textContent     = CONFIG.name.line1;
-  document.getElementById('h-name2').textContent     = CONFIG.name.line2;
-  document.getElementById('h-eyebrow').textContent   = CONFIG.eyebrow;
-  document.getElementById('h-bio').textContent       = CONFIG.heroBio;
-  document.getElementById('h-years').textContent     = CONFIG.stats.years;
-  document.getElementById('h-channels').textContent  = CONFIG.stats.channels;
-  document.getElementById('h-clients').textContent   = CONFIG.stats.clients;
-  document.getElementById('a-location').textContent  = CONFIG.about.location;
-  document.getElementById('a-availability').textContent = CONFIG.about.availability;
-  document.getElementById('a-niches').textContent    = CONFIG.about.niches;
-  document.getElementById('a-languages').textContent = CONFIG.about.languages;
-  document.getElementById('cta-text').textContent    = CONFIG.ctaText;
-  document.documentElement.style.setProperty('--accent', CONFIG.accent);
-}
+document.getElementById('contact-grid').innerHTML = contacts.map(c =>
+  `<a class="contact-card fade-in" href="${c.href}" target="_blank">
+    <div class="contact-icon">${c.icon}</div>
+    <div><div class="contact-label">${c.label}</div><div class="contact-val">${c.val}</div></div>
+  </a>`
+).join('');
 
-let roleIdx=0, charIdx=0, deleting=false;
-function typeRole() {
-  const el=document.getElementById('typed-text');
-  const cur=CONFIG.roles[roleIdx];
-  if(!deleting){
-    el.textContent=cur.slice(0,++charIdx);
-    if(charIdx===cur.length){deleting=true;setTimeout(typeRole,1600);return;}
-    setTimeout(typeRole,80);
+// Typing
+const roles = ["Video Editor.","Content Strategist.","YouTube Creator.","Channel Builder."];
+let ri=0,ci=0,del=false;
+function type(){
+  const el=document.getElementById('typed-text'), cur=roles[ri];
+  if(!del){
+    el.textContent=cur.slice(0,++ci);
+    if(ci===cur.length){del=true;setTimeout(type,1600);return;}
+    setTimeout(type,80);
   } else {
-    el.textContent=cur.slice(0,--charIdx);
-    if(charIdx===0){deleting=false;roleIdx=(roleIdx+1)%CONFIG.roles.length;setTimeout(typeRole,300);return;}
-    setTimeout(typeRole,40);
+    el.textContent=cur.slice(0,--ci);
+    if(ci===0){del=false;ri=(ri+1)%roles.length;setTimeout(type,300);return;}
+    setTimeout(type,40);
   }
 }
+type();
 
-window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40));
+window.addEventListener('scroll',()=>
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40)
+);
 
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
-function observeFadeIns(){document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));}
-
-function togglePanel(){
-  const p=document.getElementById('edit-panel');
-  p.classList.toggle('open');
-  if(p.classList.contains('open'))populatePanel();
-}
-function populatePanel(){
-  document.getElementById('ep-name1').value        = CONFIG.name.line1;
-  document.getElementById('ep-name2').value        = CONFIG.name.line2;
-  document.getElementById('ep-eyebrow').value      = CONFIG.eyebrow;
-  document.getElementById('ep-bio').value          = CONFIG.heroBio;
-  document.getElementById('ep-color-pick').value   = CONFIG.accent;
-  document.getElementById('ep-color-txt').value    = CONFIG.accent;
-  document.getElementById('ep-years').value        = CONFIG.stats.years;
-  document.getElementById('ep-channels').value     = CONFIG.stats.channels;
-  document.getElementById('ep-clients').value      = CONFIG.stats.clients;
-  document.getElementById('ep-location').value     = CONFIG.about.location;
-  document.getElementById('ep-availability').value = CONFIG.about.availability;
-  document.getElementById('ep-niches').value       = CONFIG.about.niches;
-}
-document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('ep-color-pick').addEventListener('input',function(){document.getElementById('ep-color-txt').value=this.value;});
-  document.getElementById('ep-color-txt').addEventListener('input',function(){if(/^#[0-9A-Fa-f]{6}$/.test(this.value))document.getElementById('ep-color-pick').value=this.value;});
-});
-function applyChanges(){
-  CONFIG.name.line1         = document.getElementById('ep-name1').value||CONFIG.name.line1;
-  CONFIG.name.line2         = document.getElementById('ep-name2').value||CONFIG.name.line2;
-  CONFIG.eyebrow            = document.getElementById('ep-eyebrow').value||CONFIG.eyebrow;
-  CONFIG.heroBio            = document.getElementById('ep-bio').value||CONFIG.heroBio;
-  CONFIG.accent             = document.getElementById('ep-color-txt').value||CONFIG.accent;
-  CONFIG.stats.years        = document.getElementById('ep-years').value||CONFIG.stats.years;
-  CONFIG.stats.channels     = document.getElementById('ep-channels').value||CONFIG.stats.channels;
-  CONFIG.stats.clients      = document.getElementById('ep-clients').value||CONFIG.stats.clients;
-  CONFIG.about.location     = document.getElementById('ep-location').value||CONFIG.about.location;
-  CONFIG.about.availability = document.getElementById('ep-availability').value||CONFIG.about.availability;
-  CONFIG.about.niches       = document.getElementById('ep-niches').value||CONFIG.about.niches;
-  applyStatic(); renderPortfolio(); renderSkills(); renderContacts();
-  observeFadeIns(); document.querySelectorAll('.fade-in').forEach(el=>el.classList.add('visible'));
-  togglePanel();
-}
-
-applyStatic(); renderPortfolio(); renderSkills(); renderContacts(); observeFadeIns(); typeRole();
+const obs=new IntersectionObserver(entries=>
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1}
+);
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
